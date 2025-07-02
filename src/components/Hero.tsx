@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Türk Bayrağı Sol Üst Köşe */}
-      <div className="absolute top-20 left-4 z-20">
+      <div className="hidden md:block absolute top-20 left-4 z-20">
         <img
           src="/media/tr.png"
           alt={t.hero.flagAlt}
