@@ -24,7 +24,7 @@ const Projects = () => {
     '#',
   ];
   const githubUrls = [
-    'https://github.com/0merOGZ/toDodDot',
+    'https://github.com/0merOGZ/toDoList_MyTasks',
     'https://github.com/0merOGZ/kelimeOyunu',
     'https://github.com/HasancanCakicioglu/Custom-BlackJack-Environment-ReinforcementLearning',
     '#',

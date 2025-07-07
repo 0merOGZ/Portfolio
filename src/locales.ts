@@ -54,7 +54,7 @@ export const translations = {
       social: 'Sosyal Medya',
       partnership: 'Yeni Projeler İçin Ortaklık',
       partnershipDesc: 'Freelance projeler ve part-time fırsatlar için açığım. Birlikte projeler geliştirelim!',
-      notAvailable: 'Şuan Müsait Değil',
+      notAvailable: 'Şu an Müsait Değil',
       sendMessage: 'Mesaj Gönder',
       name: 'İsim',
       email: 'Email',
@@ -65,7 +65,7 @@ export const translations = {
       subjectPlaceholder: 'Mesaj konusu',
       messagePlaceholder: 'Mesajınızı buraya yazın...',
       send: 'Mesaj Gönder',
-      copyright: '© 2024 Ömer Yasir OĞUZ. Tüm hakları saklıdır.'
+      copyright: '© 2025 Ömer Yasir OĞUZ. Tüm hakları saklıdır.'
     },
     educationData: [
       {
@@ -174,7 +174,7 @@ export const translations = {
       subjectPlaceholder: 'Message subject',
       messagePlaceholder: 'Write your message here...',
       send: 'Send Message',
-      copyright: '© 2024 Ömer Yasir OĞUZ. All rights reserved.'
+      copyright: '© 2025 Ömer Yasir OĞUZ. All rights reserved.'
     },
     educationData: [
       {
@@ -283,7 +283,7 @@ export const translations = {
       subjectPlaceholder: 'Asunto del mensaje',
       messagePlaceholder: 'Escribe tu mensaje aquí...',
       send: 'Enviar Mensaje',
-      copyright: '© 2024 Ömer Yasir OĞUZ. Todos los derechos reservados.'
+      copyright: '© 2025 Ömer Yasir OĞUZ. Todos los derechos reservados.'
     },
     educationData: [
       {
