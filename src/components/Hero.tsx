@@ -23,7 +23,7 @@ const Hero = () => {
         <div className="text-center">
           {/* Profil Avatarı */}
           <div className="mb-8">
-            <div className="w-32 h-32 sm:w-48 sm:h-48 md:w-[448px] md:h-[448px] mx-auto rounded-full bg-gradient-to-r from-purple-500 to-blue-500 p-1 mt-8 sm:mt-16 md:mt-24">
+            <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-[448px] md:h-[448px] mx-auto rounded-full bg-gradient-to-r from-purple-500 to-blue-500 p-1 mt-8 sm:mt-16 md:mt-24">
               <img
                 src="/media/pp.jpg"
                 alt={t.hero.profileAlt}
