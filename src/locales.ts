@@ -65,7 +65,7 @@ export const translations = {
       subjectPlaceholder: 'Mesaj konusu',
       messagePlaceholder: 'Mesajınızı buraya yazın...',
       send: 'Mesaj Gönder',
-      copyright: '© 2025 Ömer Yasir OĞUZ. Tüm hakları saklıdır.'
+      copyright: '© 2026 Ömer Yasir OĞUZ. Tüm hakları saklıdır.'
     },
     educationData: [
       {

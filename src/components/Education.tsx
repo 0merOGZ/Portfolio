@@ -11,7 +11,7 @@ const Education = () => {
     'Basic Flutter',
     'SQL Server Install and Integration',
     'Beginer Python',
-    'Celtx Screenplay Editor',
+    'Celtx Screenplay Editor'
   ];
   // Türkçe sabit kurum isimleri
   const institutions = [
