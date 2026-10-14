@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    background-color: #0f172a;
+  }
+  body {
+    @apply font-sans antialiased;
+  }
+  ::selection {
+    background: rgba(168, 85, 247, 0.35);
+  }
+}
+
+@layer components {
+  /* Sayfa arka plan desenleri */
+  .bg-pattern-dots {
+    background-image: radial-gradient(rgba(156, 146, 172, 0.35) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .bg-pattern-grid {
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .bg-pattern-lines {
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(148, 163, 184, 0.06) 0 1px,
+      transparent 1px 22px
+    );
+  }
+  .bg-pattern-mask {
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 85%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 85%);
+  }
+
+  /* Ortak cam efektli kart */
+  .card-glass {
+    @apply bg-slate-800/40 backdrop-blur-md border border-white/[0.07] rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-300;
+  }
+  .card-glass-hover {
+    @apply hover:border-purple-400/40 hover:bg-slate-800/60 hover:shadow-[0_8px_40px_rgba(139,92,246,0.15)];
+  }
+}

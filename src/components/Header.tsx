@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 import { translations } from '../locales';
+import { pages } from '../routes';
 
 const flagMap = {
-  tr: '/media/tr_language.png',
-  en: '/media/en_language.png',
-  es: '/media/es_language.png',
+  tr: '/media/tr_language.webp',
+  en: '/media/en_language.webp',
+  es: '/media/es_language.webp',
+  fr: '/media/fr_language.webp',
 };
 
 const Header = () => {
@@ -15,53 +18,59 @@ const Header = () => {
   const [langMenuOpen, setLangMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
-  const menuItems = [
-    { name: t.menu.home, href: '#home' },
-    { name: t.menu.about, href: '#about' },
-    { name: t.menu.education, href: '#education' },
-    { name: t.menu.skills, href: '#skills' },
-    { name: t.menu.projects, href: '#projects' },
-    { name: t.menu.contact, href: '#contact' },
-  ];
+  const { pathname } = useLocation();
+
+  const menuItems = pages.map((p) => ({ name: t.menu[p.key], href: p.path }));
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
-    }
-  };
+  // Sayfa değişince mobil menüyü kapat
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+      scrolled || isOpen ? 'bg-slate-950/80 backdrop-blur-md border-b border-white/[0.06] shadow-lg' : 'bg-transparent border-b border-transparent'
     }`}>
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between w-full">
-          {/* Site İsmi - En Sol */}
-          <div className="bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent" style={{ fontFamily: 'Bahnschrift, sans-serif', minWidth: 220, fontWeight: 'bold', fontSize: '1.75em' }}>
+          {/* Site İsmi - En Sol (yer tutucu olarak duruyor, görünmez) */}
+          <div aria-hidden className="invisible select-none bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent" style={{ fontFamily: 'Bahnschrift, sans-serif', minWidth: 220, fontWeight: 'bold', fontSize: '1.75em' }}>
             0merOGZ Portfolio
           </div>
 
-          {/* Menü - Ortalanmış ve Times New Roman */}
-          <div className="hidden md:flex flex-1 justify-center items-center space-x-8">
+          {/* Menü - Ortalanmış */}
+          <div className="hidden xl:flex flex-1 justify-center items-center gap-1">
             {menuItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="text-gray-300 hover:text-white transition-colors duration-300 hover:scale-105"
-                style={{ fontFamily: 'Times New Roman, Times, serif', letterSpacing: 0.5, fontWeight: 'bold', fontSize: '1.75em' }}
+              <NavLink
+                key={item.href}
+                to={item.href}
+                end
+                className={({ isActive }) =>
+                  `relative px-4 py-2 rounded-full font-display text-[17px] font-medium tracking-wide transition-all duration-300 ${
+                    isActive
+                      ? 'text-white bg-white/[0.08] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]'
+                      : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
+                  }`
+                }
               >
-                {item.name}
-              </button>
+                {({ isActive }) => (
+                  <>
+                    {item.name}
+                    {isActive && (
+                      <span className="absolute left-1/2 -translate-x-1/2 -bottom-[3px] h-[2px] w-6 rounded-full bg-gradient-to-r from-purple-400 to-blue-400" />
+                    )}
+                  </>
+                )}
+              </NavLink>
             ))}
           </div>
 
@@ -79,7 +88,7 @@ const Header = () => {
               {/* Dropdown */}
               {langMenuOpen && (
                 <div className="absolute right-0 mt-2 w-44 bg-slate-800 border border-slate-700 rounded-lg shadow-lg animate-fade-in-up z-50">
-                  {(['tr','en','es'] as const).map((lang) => (
+                  {(['tr','en','es','fr'] as const).map((lang) => (
                     <button
                       key={lang}
                       onClick={() => { setLanguage(lang); setLangMenuOpen(false); }}
@@ -97,8 +106,9 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white ml-2"
+            className="xl:hidden text-white ml-2"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -106,16 +116,25 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-4 p-4 bg-slate-800/95 backdrop-blur-sm rounded-lg">
+          <div className="xl:hidden mt-4 p-4 bg-slate-800/95 backdrop-blur-sm rounded-2xl border border-white/[0.06]">
             {menuItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left py-2 text-gray-300 hover:text-white transition-colors duration-300"
-                style={{ fontFamily: 'Times New Roman, Times, serif', letterSpacing: 0.5, fontWeight: 'bold', fontSize: '1.75em' }}
+              <NavLink
+                key={item.href}
+                to={item.href}
+                end
+                className={({ isActive }) =>
+                  `flex items-center gap-3 w-full text-left px-3 py-3 rounded-xl font-display text-xl font-medium transition-colors duration-300 ${
+                    isActive ? 'text-white bg-white/[0.07]' : 'text-slate-300 hover:text-white hover:bg-white/[0.04]'
+                  }`
+                }
               >
-                {item.name}
-              </button>
+                {({ isActive }) => (
+                  <>
+                    <span className={`h-1.5 w-1.5 rounded-full ${isActive ? 'bg-gradient-to-r from-purple-400 to-blue-400' : 'bg-slate-600'}`} />
+                    {item.name}
+                  </>
+                )}
+              </NavLink>
             ))}
             {/* Mobile Language Selector */}
             <div className="mt-4">
@@ -130,7 +149,7 @@ const Header = () => {
                 </button>
                 {langMenuOpen && (
                   <div className="absolute right-0 mt-2 w-44 bg-slate-800 border border-slate-700 rounded-lg shadow-lg animate-fade-in-up z-50">
-                    {(['tr','en','es'] as const).map((lang) => (
+                    {(['tr','en','es','fr'] as const).map((lang) => (
                       <button
                         key={lang}
                         onClick={() => { setLanguage(lang); setLangMenuOpen(false); }}

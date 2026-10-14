@@ -8,6 +8,7 @@ export const translations = {
       education: 'Eğitim',
       skills: 'Yetenekler',
       projects: 'Projeler',
+      products: 'Ürünler',
       contact: 'İletişim',
     },
     hero: {
@@ -15,6 +16,7 @@ export const translations = {
       location: 'Üsküdar/İSTANBUL',
       description: 'Modern web, mobil ve yapay zeka teknolojileriyle ilgilenen bir geliştiriciyim. Python, AI, Unreal Engine ve mobil uygulama geliştirme alanlarında projeler üretiyorum.',
       cv: 'CV İndir',
+      ctaProjects: 'Projelerimi İncele',
       flagAlt: 'Türk Bayrağı',
       profileAlt: 'Ömer Yasir OĞUZ Profil Fotoğrafı',
     },
@@ -44,9 +46,21 @@ export const translations = {
       other: 'Diğer'
     },
     projects: {
-      desc: 'Geliştirdiğim bazı projeler ve uygulamalar. Her birinde farklı teknolojiler ve yaklaşımlar denedim.',
+      desc: 'Öğrencilik dönemi projelerim, denemelerim ve ücretsiz çalışmalarım. Her birinde farklı teknolojiler ve yaklaşımlar denedim.',
       demo: 'Demo',
-      code: 'Kod'
+      code: 'Kod',
+      media: 'Görseller',
+      report: 'Rapor'
+    },
+    products: {
+      desc: 'Yayınladığım oyunlar ve uygulamalar.',
+      all: 'Tümü',
+      games: 'Oyunlar',
+      apps: 'Uygulamalar',
+      emptyTitle: 'Çok yakında',
+      emptyDesc: 'Üzerinde çalıştığım oyunlar ve uygulamalar yayınlandıkça burada yer alacak.',
+      status: { released: 'Yayında', beta: 'Beta', soon: 'Yakında' },
+      links: { store: 'Mağaza', download: 'İndir', web: 'Web' }
     },
     contact: {
       desc: 'Projeleriniz hakkında konuşmak veya işbirliği yapmak için benimle iletişime geçin.',
@@ -65,7 +79,8 @@ export const translations = {
       subjectPlaceholder: 'Mesaj konusu',
       messagePlaceholder: 'Mesajınızı buraya yazın...',
       send: 'Mesaj Gönder',
-      copyright: '© 2025 Ömer Yasir OĞUZ. Tüm hakları saklıdır.'
+      mailHint: 'Gönder butonuna bastığınızda e-posta uygulamanız mesajınız hazır şekilde açılır.',
+      copyright: 'Tüm hakları saklıdır.'
     },
     educationData: [
       {
@@ -83,20 +98,32 @@ export const translations = {
     ],
     projectsData: [
       {
+        title: 'HEIC → JPG Dönüştürücü',
+        description: "iPhone'dan aktarılan HEIC/HEIF fotoğrafları toplu şekilde JPG'ye çeviren araç. Masaüstü sürümü ilerleme çubuğu ve kalan süre gösterir; tarayıcıda çalışan web sürümü de var. Fotoğraflar hiçbir sunucuya yüklenmez, tüm işlem bilgisayarda yapılır."
+      },
+      {
+        title: 'MPEG → MP4 Video Dönüştürücü',
+        description: 'Eski MPEG, MPG, TS ve M2TS videoları iPhone ile tam uyumlu MP4 (H.264/AAC) formatına toplu olarak dönüştüren konsol uygulaması. FFmpeg bulunamazsa kendisi indirip kurar ve her dosya için ilerleme gösterir.'
+      },
+      {
         title: 'TodoList Uygulaması',
-        description: 'Kullanıcıların görev ekleyip yönetebildiği, tamamlananları işaretleyebildiği modern ve basitbir todo uygulaması. Şuan geliştirilme aşamasında ve Staj projesi olarak devam ediliyor. (demo aktif değildir)'
+        description: 'Kullanıcıların görev ekleyip yönetebildiği, tamamlananları işaretleyebildiği modern ve basit bir todo uygulaması. Şuan geliştirilme aşamasında ve Staj projesi olarak devam ediliyor. (demo aktif değildir)'
       },
       {
         title: 'Kelime Avı',
         description: 'Bitirme projesi olarak yaptığım python/tkinter ile geliştirilmiş bir kelime oyunu. Kelimeleri tahmin ederek puan kazanılan, eğlenceli ve öğretici bir oyun.'
       },
       {
+        title: 'Araba Satış/Kiralama Galeri Veritabanı',
+        description: 'Database Systems dersi dönem projesi olarak yapılan bu projede SQL Server ile veritabanı tasarımı, veri ekleme, sorgulama ve güncelleme işlemleri yapıldığı bir veritabanı yapısı oluşturuldu. Bu veritabanında Cars, Engine, Employee ve Customer gibi tablolar bulunuyor. Bu tablolar arasında ilişkiler kuruldu ve bu ilişkiler ile veritabanının performansı artırıldı. Ve hazır kullanıma uygun View ekleri hazırlandı.'
+      },
+      {
         title: 'Blackjack AI',
         description: 'Üniversitenin 3. yılında grup projesi olarak yapılan bu projede literatür araştırması, tasarım ve test aşamasında rol aldığım bir proje. Eğitilen AI model ile %49 oranına yaklaşan bir money win oranı tutturmayı başardık. (demo aktif değildir!)'
       },
       {
-        title: 'Araba Satış/Kiralama Galeri Veritabanı',
-        description: 'Database Systems dersi dönem projesi olarak yapılan bu projede SQL Server ile veritabanı tasarımı, veri ekleme, sorgulama ve güncelleme işlemleri yapıldığı bir veritabanı yapısı oluşturuldu. Bu veritabanında Cars, Engine, Emplooye ve Customer gibi tablolar bulunuyor. Bu tablolar arasında ilişkiler kuruldu ve bu ilişkiler ile veritabanının performansı artırıldı. Ve hazır kullanıma uygun View ekleri hazırlandı.'
+        title: 'General Quiz',
+        description: 'Üniversitede Python dersi için yaptığım bilgi yarışması. 5 kategori ve 2 zorluk seviyesi, soru başına 10 saniye, joker hakkı ve SQLite veritabanında tutulan skor tablosu var.'
       }
     ],
     contactInfo: [
@@ -117,6 +144,7 @@ export const translations = {
       education: 'Education',
       skills: 'Skills',
       projects: 'Projects',
+      products: 'Products',
       contact: 'Contact',
     },
     hero: {
@@ -124,6 +152,7 @@ export const translations = {
       location: 'Uskudar/ISTANBUL',
       description: 'I am a developer interested in modern web, mobile, and AI technologies. I create projects in Python, AI, Unreal Engine, and mobile app development.',
       cv: 'Download CV',
+      ctaProjects: 'View My Projects',
       flagAlt: 'Turkish Flag',
       profileAlt: 'Ömer Yasir OĞUZ Profile Photo',
     },
@@ -153,9 +182,21 @@ export const translations = {
       other: 'Other'
     },
     projects: {
-      desc: 'Some of the projects and applications I have developed. I tried different technologies and approaches in each.',
+      desc: 'My student projects, experiments and free work. I tried different technologies and approaches in each.',
       demo: 'Demo',
-      code: 'Code'
+      code: 'Code',
+      media: 'Images',
+      report: 'Report'
+    },
+    products: {
+      desc: 'Games and applications I have released.',
+      all: 'All',
+      games: 'Games',
+      apps: 'Apps',
+      emptyTitle: 'Coming soon',
+      emptyDesc: 'The games and apps I am working on will appear here as they are released.',
+      status: { released: 'Live', beta: 'Beta', soon: 'Coming Soon' },
+      links: { store: 'Store', download: 'Download', web: 'Web' }
     },
     contact: {
       desc: 'Contact me to discuss your projects or collaborate.',
@@ -174,7 +215,8 @@ export const translations = {
       subjectPlaceholder: 'Message subject',
       messagePlaceholder: 'Write your message here...',
       send: 'Send Message',
-      copyright: '© 2025 Ömer Yasir OĞUZ. All rights reserved.'
+      mailHint: 'Pressing send opens your email app with the message ready to go.',
+      copyright: 'All rights reserved.'
     },
     educationData: [
       {
@@ -192,6 +234,14 @@ export const translations = {
     ],
     projectsData: [
       {
+        title: 'HEIC → JPG Converter',
+        description: 'A tool that batch-converts HEIC/HEIF photos transferred from an iPhone to JPG. The desktop version shows a progress bar and remaining time, and there is also a web version that runs in the browser. Photos are never uploaded to a server; everything happens locally.'
+      },
+      {
+        title: 'MPEG → MP4 Video Converter',
+        description: 'A console app that batch-converts old MPEG, MPG, TS and M2TS videos to iPhone-compatible MP4 (H.264/AAC). If FFmpeg is missing it downloads and installs it automatically, and shows progress for each file.'
+      },
+      {
         title: 'TodoList App',
         description: 'A modern and simple todo app where users can add and manage tasks, and mark completed ones. Currently under development as an internship project. (demo is not active)'
       },
@@ -200,12 +250,16 @@ export const translations = {
         description: 'A word game developed with python/tkinter as a graduation project. A fun and educational game where you earn points by guessing words.'
       },
       {
+        title: 'Car Sales/Rental Gallery Database',
+        description: 'A database project for the Database Systems course, involving SQL Server database design, data entry, querying, and updating. The database includes tables like Cars, Engine, Employee, and Customer. Relationships were established between these tables to improve performance, and ready-to-use View additions were prepared.'
+      },
+      {
         title: 'Blackjack AI',
         description: 'A group project in the 3rd year of university, where I took part in literature research, design, and testing. We managed to achieve a money win rate close to 49% with the trained AI model. (demo is not active!)'
       },
       {
-        title: 'Car Sales/Rental Gallery Database',
-        description: 'A database project for the Database Systems course, involving SQL Server database design, data entry, querying, and updating. The database includes tables like Cars, Engine, Employee, and Customer. Relationships were established between these tables to improve performance, and ready-to-use View additions were prepared.'
+        title: 'General Quiz',
+        description: 'A quiz game I built for a Python course at university. It has 5 categories, 2 difficulty levels, 10 seconds per question, a lifeline and a high score table stored in SQLite.'
       }
     ],
     contactInfo: [
@@ -226,6 +280,7 @@ export const translations = {
       education: 'Educación',
       skills: 'Habilidades',
       projects: 'Proyectos',
+      products: 'Productos',
       contact: 'Contacto',
     },
     hero: {
@@ -233,6 +288,7 @@ export const translations = {
       location: 'Uskudar/ESTAMBUL',
       description: 'Soy un desarrollador interesado en tecnologías web, móviles e inteligencia artificial modernas. Creo proyectos en Python, IA, Unreal Engine y desarrollo de aplicaciones móviles.',
       cv: 'Descargar CV',
+      ctaProjects: 'Ver Mis Proyectos',
       flagAlt: 'Bandera de Turquía',
       profileAlt: 'Foto de perfil de Ömer Yasir OĞUZ',
     },
@@ -262,9 +318,21 @@ export const translations = {
       other: 'Otros'
     },
     projects: {
-      desc: 'Algunos de los proyectos y aplicaciones que he desarrollado. Probé diferentes tecnologías y enfoques en cada uno.',
+      desc: 'Mis proyectos de estudiante, experimentos y trabajos gratuitos. Probé diferentes tecnologías y enfoques en cada uno.',
       demo: 'Demo',
-      code: 'Código'
+      code: 'Código',
+      media: 'Imágenes',
+      report: 'Informe'
+    },
+    products: {
+      desc: 'Juegos y aplicaciones que he publicado.',
+      all: 'Todos',
+      games: 'Juegos',
+      apps: 'Aplicaciones',
+      emptyTitle: 'Muy pronto',
+      emptyDesc: 'Los juegos y aplicaciones en los que estoy trabajando aparecerán aquí a medida que se publiquen.',
+      status: { released: 'Publicado', beta: 'Beta', soon: 'Próximamente' },
+      links: { store: 'Tienda', download: 'Descargar', web: 'Web' }
     },
     contact: {
       desc: 'Contáctame para hablar sobre tus proyectos o colaborar.',
@@ -283,7 +351,8 @@ export const translations = {
       subjectPlaceholder: 'Asunto del mensaje',
       messagePlaceholder: 'Escribe tu mensaje aquí...',
       send: 'Enviar Mensaje',
-      copyright: '© 2025 Ömer Yasir OĞUZ. Todos los derechos reservados.'
+      mailHint: 'Al pulsar enviar se abrirá tu aplicación de correo con el mensaje listo.',
+      copyright: 'Todos los derechos reservados.'
     },
     educationData: [
       {
@@ -301,6 +370,14 @@ export const translations = {
     ],
     projectsData: [
       {
+        title: 'Convertidor HEIC → JPG',
+        description: 'Una herramienta que convierte por lotes fotos HEIC/HEIF de un iPhone a JPG. La versión de escritorio muestra una barra de progreso y el tiempo restante, y también hay una versión web que funciona en el navegador. Las fotos nunca se suben a un servidor; todo se hace localmente.'
+      },
+      {
+        title: 'Convertidor de Video MPEG → MP4',
+        description: 'Una aplicación de consola que convierte por lotes videos antiguos MPEG, MPG, TS y M2TS a MP4 compatible con iPhone (H.264/AAC). Si falta FFmpeg, lo descarga e instala automáticamente y muestra el progreso de cada archivo.'
+      },
+      {
         title: 'Aplicación TodoList',
         description: 'Una aplicación de tareas moderna y sencilla donde los usuarios pueden agregar y gestionar tareas, y marcar las completadas. Actualmente en desarrollo como proyecto de prácticas. (¡la demo no está activa!)'
       },
@@ -309,12 +386,16 @@ export const translations = {
         description: 'Un juego de palabras desarrollado con python/tkinter como proyecto de graduación. Un juego divertido y educativo donde ganas puntos adivinando palabras.'
       },
       {
+        title: 'Base de Datos de Venta/Alquiler de Coches',
+        description: 'Un proyecto de base de datos para la asignatura de Sistemas de Bases de Datos, que implica el diseño de bases de datos SQL Server, entrada de datos, consultas y actualizaciones. La base de datos incluye tablas como Cars, Engine, Employee y Customer. Se establecieron relaciones entre estas tablas para mejorar el rendimiento y se prepararon vistas listas para usar.'
+      },
+      {
         title: 'Blackjack IA',
         description: 'Un proyecto grupal en el tercer año de universidad, donde participé en la investigación, el diseño y las pruebas. Logramos una tasa de ganancia de dinero cercana al 49% con el modelo de IA entrenado. (¡la demo no está activa!)'
       },
       {
-        title: 'Base de Datos de Venta/Alquiler de Coches',
-        description: 'Un proyecto de base de datos para la asignatura de Sistemas de Bases de Datos, que implica el diseño de bases de datos SQL Server, entrada de datos, consultas y actualizaciones. La base de datos incluye tablas como Cars, Engine, Employee y Customer. Se establecieron relaciones entre estas tablas para mejorar el rendimiento y se prepararon vistas listas para usar.'
+        title: 'General Quiz',
+        description: 'Un juego de preguntas que hice para una asignatura de Python en la universidad. Tiene 5 categorías, 2 niveles de dificultad, 10 segundos por pregunta, un comodín y una tabla de puntuaciones guardada en SQLite.'
       }
     ],
     contactInfo: [
@@ -326,4 +407,140 @@ export const translations = {
       }
     ],
   },
-}; 
+  fr: {
+    language: "Français",
+    languageOption: "Option de langue",
+    menu: {
+      home: "Accueil",
+      about: "À propos",
+      education: "Formation",
+      skills: "Compétences",
+      projects: "Projets",
+      products: "Produits",
+      contact: "Contact",
+    },
+    hero: {
+      name: "Ömer Yasir OĞUZ",
+      location: "Üsküdar/ISTANBUL",
+      description: "Je suis un développeur passionné par les technologies web, mobiles et d'intelligence artificielle modernes. Je crée des projets en Python, IA, Unreal Engine et développement d'applications mobiles.",
+      cv: "Télécharger le CV",
+      ctaProjects: "Voir mes projets",
+      flagAlt: "Drapeau de la Turquie",
+      profileAlt: "Photo de profil de Ömer Yasir OĞUZ",
+    },
+    about: {
+      cleanCode: "Code propre",
+      cleanCodeDesc: "Je respecte les principes d'écriture d'un code durable et lisible.",
+      creative: "Solutions créatives",
+      creativeDesc: "J'aime trouver des solutions créatives et efficaces à des problèmes complexes.",
+      teamwork: "Travail d'équipe",
+      teamworkDesc: "J'accorde de l'importance à la collaboration et au partage des connaissances.",
+      goalOriented: "Orienté objectifs",
+      goalOrientedDesc: "J'adopte une approche disciplinée et déterminée pour atteindre les objectifs du projet.",
+      intro: "Bonjour ! Je suis",
+      p1: "Je me concentre sur l'apprentissage continu et le développement personnel. J'aime apprendre de nouveaux outils et frameworks pour rester à jour dans le monde de la technologie en constante évolution. J'adopte les principes du code propre et applique une approche de développement piloté par les tests.",
+      p2: "Pendant mon temps libre, j'explore des projets open source, je suis des blogs technologiques et j'essaie d'apprendre de nouvelles choses dans les communautés de développeurs dès que possible.",
+      p3: "En dehors de mon domaine, je m'intéresse à la cuisine, aux arts martiaux et à l'écriture de scénarios pour le cinéma et la télévision."
+    },
+    education: {
+      desc: "Mon parcours académique et mon apprentissage continu.",
+      history: "Parcours scolaire",
+      courses: "Cours"
+    },
+    skills: {
+      desc: "Je développe des applications web modernes avec des technologies et des outils actuels.",
+      frontend: "Frontend",
+      backend: "Backend",
+      other: "Autres"
+    },
+    projects: {
+      desc: "Mes projets étudiants, mes expérimentations et mes travaux gratuits. J'ai essayé différentes technologies et approches dans chacun d'eux.",
+      demo: "Démo",
+      code: "Code",
+      media: "Images",
+      report: "Rapport"
+    },
+    products: {
+      desc: "Les jeux et applications que j'ai publiés.",
+      all: "Tous",
+      games: "Jeux",
+      apps: "Applications",
+      emptyTitle: "Bientôt disponible",
+      emptyDesc: "Les jeux et applications sur lesquels je travaille apparaîtront ici dès leur sortie.",
+      status: { released: "Disponible", beta: "Bêta", soon: "Bientôt" },
+      links: { store: "Boutique", download: "Télécharger", web: "Web" }
+    },
+    contact: {
+      desc: "Contactez-moi pour parler de vos projets ou pour collaborer.",
+      info: "Coordonnées",
+      social: "Réseaux sociaux",
+      partnership: "Ouvert aux nouveaux projets",
+      partnershipDesc: "Je suis ouvert aux projets freelance et aux opportunités à temps partiel. Développons des projets ensemble !",
+      notAvailable: "Pas disponible actuellement",
+      sendMessage: "Envoyer un message",
+      name: "Nom",
+      email: "Email",
+      subject: "Sujet",
+      message: "Message",
+      namePlaceholder: "Votre nom",
+      emailPlaceholder: "email@exemple.com",
+      subjectPlaceholder: "Sujet du message",
+      messagePlaceholder: "Écrivez votre message ici...",
+      send: "Envoyer le message",
+      mailHint: "En cliquant sur envoyer, votre application de messagerie s'ouvrira avec le message prêt.",
+      copyright: "Tous droits réservés."
+    },
+    educationData: [
+      {
+        degree: "Licence en génie informatique (en anglais)",
+        institution: "Université Beykoz - Beykoz/ISTANBUL",
+        period: "2020 - 2025",
+        description: "J'ai étudié les bases du logiciel, l'algorithmique et le développement de projets en génie informatique."
+      },
+      {
+        degree: "Lycée",
+        institution: "Lycée anatolien Mustafa Saffet - Kadıköy/ISTANBUL",
+        period: "2015 - 2019",
+        description: "Enseignement secondaire à dominante scientifique."
+      }
+    ],
+    projectsData: [
+      {
+        title: "Convertisseur HEIC → JPG",
+        description: "Un outil qui convertit par lots en JPG les photos HEIC/HEIF transférées depuis un iPhone. La version de bureau affiche une barre de progression et le temps restant, et il existe aussi une version web qui fonctionne dans le navigateur. Les photos ne sont jamais envoyées sur un serveur : tout se fait en local."
+      },
+      {
+        title: "Convertisseur vidéo MPEG → MP4",
+        description: "Une application console qui convertit par lots d'anciennes vidéos MPEG, MPG, TS et M2TS en MP4 compatible iPhone (H.264/AAC). Si FFmpeg est absent, elle le télécharge et l'installe automatiquement, et affiche la progression de chaque fichier."
+      },
+      {
+        title: "Application TodoList",
+        description: "Une application de tâches moderne et simple où les utilisateurs peuvent ajouter et gérer des tâches, et marquer celles qui sont terminées. Actuellement en développement dans le cadre d'un stage. (la démo n'est pas active)"
+      },
+      {
+        title: "Kelime Avı (Chasse aux mots)",
+        description: "Un jeu de mots développé en python/tkinter comme projet de fin d'études. Un jeu amusant et éducatif où l'on gagne des points en devinant des mots."
+      },
+      {
+        title: "Base de données de vente/location de voitures",
+        description: "Un projet de base de données pour le cours de Systèmes de bases de données : conception d'une base SQL Server, saisie de données, requêtes et mises à jour. La base comprend des tables comme Cars, Engine, Employee et Customer. Des relations ont été établies entre ces tables pour améliorer les performances, et des vues prêtes à l'emploi ont été préparées."
+      },
+      {
+        title: "Blackjack IA",
+        description: "Un projet de groupe réalisé en 3e année d'université, où j'ai participé à la recherche bibliographique, à la conception et aux tests. Nous avons atteint un taux de gain proche de 49 % avec le modèle d'IA entraîné. (la démo n'est pas active !)"
+      },
+      {
+        title: "General Quiz",
+        description: "Un jeu de quiz réalisé pour un cours de Python à l'université. Il propose 5 catégories, 2 niveaux de difficulté, 10 secondes par question, un joker et un tableau des scores enregistré dans SQLite."
+      }
+    ],
+    contactInfo: [
+      {
+        title: "Email"
+      },
+      {
+        title: "Adresse"
+      }
+    ],
+  },
+};

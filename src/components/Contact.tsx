@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
+import SectionHeader from './SectionHeader';
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -13,9 +14,11 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic here
-    console.log('Form submitted:', formData);
-    // Reset form
+    // Sunucu olmadığı için mesaj, ziyaretçinin e-posta uygulamasında hazır olarak açılır
+    const body = `${formData.message}
+
+— ${formData.name} (${formData.email})`;
+    window.location.href = `mailto:omeryasiroguz@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(body)}`;
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
@@ -46,7 +49,7 @@ const Contact = () => {
       icon: <Github size={24} />,
       name: 'GitHub',
       url: 'https://github.com/0merOGZ',
-      color: 'hover:text-gray-400'
+      color: 'hover:text-slate-400'
     },
     {
       icon: <Linkedin size={24} />,
@@ -57,19 +60,9 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-slate-800/50">
+    <section id="contact" className="pt-32 pb-24 md:pt-36">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              {t.menu.contact}
-            </span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mb-8"></div>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            {t.contact.desc}
-          </p>
-        </div>
+        <SectionHeader page="contact" description={t.contact.desc} />
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
@@ -83,7 +76,7 @@ const Contact = () => {
                   <a
                     key={index}
                     href={info.link}
-                    className="flex items-center space-x-4 p-4 bg-slate-700/50 backdrop-blur-sm rounded-lg border border-slate-600/50 hover:border-purple-500/50 transition-all duration-300 group"
+                    className="flex items-center space-x-4 card-glass card-glass-hover p-4 !rounded-xl group"
                   >
                     <div className="text-purple-400 group-hover:text-purple-300 transition-colors duration-300">
                       {info.icon}
@@ -92,7 +85,7 @@ const Contact = () => {
                       <h4 className="text-white font-medium">
                         {info.title}
                       </h4>
-                      <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                      <p className="text-slate-400 group-hover:text-slate-300 transition-colors duration-300">
                         {info.value}
                       </p>
                     </div>
@@ -113,7 +106,7 @@ const Contact = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-3 bg-slate-700/50 backdrop-blur-sm rounded-lg border border-slate-600/50 hover:border-purple-500/50 text-gray-400 ${social.color} transition-all duration-300 transform hover:scale-110`}
+                    className={`card-glass card-glass-hover p-3 !rounded-xl text-slate-400 ${social.color} transition-all duration-300 transform hover:scale-110`}
                     title={social.name}
                   >
                     {social.icon}
@@ -123,11 +116,11 @@ const Contact = () => {
             </div>
 
             {/* Available for Work */}
-            <div className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 p-6 rounded-xl border border-purple-500/30">
+            <div className="bg-gradient-to-r from-purple-500/15 to-blue-500/15 p-6 rounded-2xl border border-purple-400/25 backdrop-blur-md">
               <h3 className="text-xl font-semibold text-white mb-2">
                 {t.contact.partnership}
               </h3>
-              <p className="text-gray-300 mb-4">
+              <p className="text-slate-300 mb-4">
                 {t.contact.partnershipDesc}
               </p>
               <div className="flex gap-2 items-center">
@@ -143,10 +136,10 @@ const Contact = () => {
             <h3 className="text-2xl font-semibold text-white mb-6">
               {t.contact.sendMessage}
             </h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 card-glass p-6 md:p-8">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-gray-300 font-medium mb-2">
+                  <label htmlFor="name" className="block text-slate-300 font-medium mb-2">
                     {t.contact.name}
                   </label>
                   <input
@@ -156,12 +149,12 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:outline-none focus:border-purple-500 text-white placeholder-gray-400 transition-colors duration-300"
+                    className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 text-white placeholder-gray-400 transition-colors duration-300"
                     placeholder={t.contact.namePlaceholder}
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-gray-300 font-medium mb-2">
+                  <label htmlFor="email" className="block text-slate-300 font-medium mb-2">
                     {t.contact.email}
                   </label>
                   <input
@@ -171,14 +164,14 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:outline-none focus:border-purple-500 text-white placeholder-gray-400 transition-colors duration-300"
+                    className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 text-white placeholder-gray-400 transition-colors duration-300"
                     placeholder={t.contact.emailPlaceholder}
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-gray-300 font-medium mb-2">
+                <label htmlFor="subject" className="block text-slate-300 font-medium mb-2">
                   {t.contact.subject}
                 </label>
                 <input
@@ -188,13 +181,13 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:outline-none focus:border-purple-500 text-white placeholder-gray-400 transition-colors duration-300"
+                  className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 text-white placeholder-gray-400 transition-colors duration-300"
                   placeholder={t.contact.subjectPlaceholder}
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-gray-300 font-medium mb-2">
+                <label htmlFor="message" className="block text-slate-300 font-medium mb-2">
                   {t.contact.message}
                 </label>
                 <textarea
@@ -204,7 +197,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:outline-none focus:border-purple-500 text-white placeholder-gray-400 resize-none transition-colors duration-300"
+                  className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 text-white placeholder-gray-400 resize-none transition-colors duration-300"
                   placeholder={t.contact.messagePlaceholder}
                 ></textarea>
               </div>
@@ -216,16 +209,11 @@ const Contact = () => {
                 <Send size={20} />
                 <span>{t.contact.send}</span>
               </button>
+              <p className="text-slate-500 text-xs text-center">{t.contact.mailHint}</p>
             </form>
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-20 pt-8 border-t border-slate-700/50 text-center">
-          <p className="text-gray-400">
-            {t.contact.copyright}
-          </p>
-        </div>
       </div>
     </section>
   );
