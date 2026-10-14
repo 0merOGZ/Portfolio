@@ -53,15 +53,15 @@ export const translations = {
       report: 'Rapor'
     },
     products: {
-      desc: "Geliştirdiğim ve yayınladığım oyunlar ve uygulamalar.",
+      desc: "Geliştirme aşamasındaki ve yayınlanan oyunlar, uygulamalar ve web siteleri.",
       all: 'Tümü',
       games: 'Oyunlar',
+      websites: "Web Siteleri",
+      codeName: "Kod Adı",
       apps: 'Uygulamalar',
       emptyTitle: 'Çok yakında',
       emptyDesc: 'Üzerinde çalıştığım oyunlar ve uygulamalar yayınlandıkça burada yer alacak.',
-      status: { released: "Yayında", beta: "Beta", dev: "Geliştiriliyor", soon: "Yakında" },
-      appsPlannedTitle: "Öğrenciler için bir web uygulaması planlıyorum",
-      appsPlannedDesc: "Öğrencilerin işini kolaylaştıracak bir web sitesi uygulaması planlama aşamasında. Para kazanma amacı yok; tamamen ücretsiz olacak.",
+      status: { released: "Yayında", beta: "Beta", planned: "Planlanıyor", dev: "Geliştiriliyor", soon: "Yakında" },
       links: { store: 'Mağaza', download: 'İndir', web: 'Web' }
     },
     contact: {
@@ -125,7 +125,7 @@ export const translations = {
       },
       {
         title: 'General Quiz',
-        description: 'Üniversitede Python dersi için yaptığım bilgi yarışması. 5 kategori ve 2 zorluk seviyesi, soru başına 10 saniye, joker hakkı ve SQLite veritabanında tutulan skor tablosu var.'
+        description: "Üniversitede Python dersi kapsamında hazırlanan bir bilgi yarışması. 5 kategori ve 2 zorluk seviyesi, soru başına 10 saniye, joker hakkı ve SQLite veritabanında tutulan skor tablosu var."
       }
     ],
     contactInfo: [
@@ -191,15 +191,15 @@ export const translations = {
       report: 'Report'
     },
     products: {
-      desc: "Games and applications I am building and releasing.",
+      desc: "Games, apps and websites in development or released.",
       all: 'All',
       games: 'Games',
+      websites: "Websites",
+      codeName: "Code Name",
       apps: 'Apps',
       emptyTitle: 'Coming soon',
       emptyDesc: 'The games and apps I am working on will appear here as they are released.',
-      status: { released: "Live", beta: "Beta", dev: "In Development", soon: "Coming Soon" },
-      appsPlannedTitle: "A web app for students is in the works",
-      appsPlannedDesc: "I am planning a web application to make students' lives easier. It is not meant to make money; it will be completely free.",
+      status: { released: "Live", beta: "Beta", planned: "Planned", dev: "In Development", soon: "Coming Soon" },
       links: { store: 'Store', download: 'Download', web: 'Web' }
     },
     contact: {
@@ -263,7 +263,7 @@ export const translations = {
       },
       {
         title: 'General Quiz',
-        description: 'A quiz game I built for a Python course at university. It has 5 categories, 2 difficulty levels, 10 seconds per question, a lifeline and a high score table stored in SQLite.'
+        description: "A quiz game prepared for a Python course at university. It has 5 categories, 2 difficulty levels, 10 seconds per question, a lifeline and a high score table stored in SQLite."
       }
     ],
     contactInfo: [
@@ -329,15 +329,15 @@ export const translations = {
       report: 'Informe'
     },
     products: {
-      desc: "Juegos y aplicaciones que estoy desarrollando y publicando.",
+      desc: "Juegos, aplicaciones y sitios web en desarrollo o publicados.",
       all: 'Todos',
       games: 'Juegos',
+      websites: "Sitios web",
+      codeName: "Nombre en clave",
       apps: 'Aplicaciones',
       emptyTitle: 'Muy pronto',
       emptyDesc: 'Los juegos y aplicaciones en los que estoy trabajando aparecerán aquí a medida que se publiquen.',
-      status: { released: "Publicado", beta: "Beta", dev: "En desarrollo", soon: "Próximamente" },
-      appsPlannedTitle: "Estoy planeando una aplicación web para estudiantes",
-      appsPlannedDesc: "Una aplicación web para facilitar la vida de los estudiantes está en fase de planificación. No tiene fines de lucro; será completamente gratuita.",
+      status: { released: "Publicado", beta: "Beta", planned: "Planificado", dev: "En desarrollo", soon: "Próximamente" },
       links: { store: 'Tienda', download: 'Descargar', web: 'Web' }
     },
     contact: {
@@ -401,7 +401,7 @@ export const translations = {
       },
       {
         title: 'General Quiz',
-        description: 'Un juego de preguntas que hice para una asignatura de Python en la universidad. Tiene 5 categorías, 2 niveles de dificultad, 10 segundos por pregunta, un comodín y una tabla de puntuaciones guardada en SQLite.'
+        description: "Un juego de preguntas preparado para una asignatura de Python en la universidad. Tiene 5 categorías, 2 niveles de dificultad, 10 segundos por pregunta, un comodín y una tabla de puntuaciones guardada en SQLite."
       }
     ],
     contactInfo: [
@@ -467,15 +467,15 @@ export const translations = {
       report: "Rapport"
     },
     products: {
-      desc: "Les jeux et applications que je développe et publie.",
+      desc: "Jeux, applications et sites web en développement ou publiés.",
       all: "Tous",
       games: "Jeux",
+      websites: "Sites web",
+      codeName: "Nom de code",
       apps: "Applications",
       emptyTitle: "Bientôt disponible",
       emptyDesc: "Les jeux et applications sur lesquels je travaille apparaîtront ici dès leur sortie.",
-      status: { released: "Disponible", beta: "Bêta", dev: "En développement", soon: "Bientôt" },
-      appsPlannedTitle: "Une application web pour les étudiants est en préparation",
-      appsPlannedDesc: "Je prépare une application web pour faciliter la vie des étudiants. Elle n'a pas de but lucratif et sera entièrement gratuite.",
+      status: { released: "Disponible", beta: "Bêta", planned: "Planifié", dev: "En développement", soon: "Bientôt" },
       links: { store: "Boutique", download: "Télécharger", web: "Web" }
     },
     contact: {
@@ -539,7 +539,7 @@ export const translations = {
       },
       {
         title: "General Quiz",
-        description: "Un jeu de quiz réalisé pour un cours de Python à l'université. Il propose 5 catégories, 2 niveaux de difficulté, 10 secondes par question, un joker et un tableau des scores enregistré dans SQLite."
+        description: "Un jeu de quiz préparé pour un cours de Python à l'université. Il propose 5 catégories, 2 niveaux de difficulté, 10 secondes par question, un joker et un tableau des scores enregistré dans SQLite."
       }
     ],
     contactInfo: [

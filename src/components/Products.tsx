@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { AppWindow, Download, Gamepad2, Globe, GraduationCap, Layers, Rocket, Store } from 'lucide-react';
+import { AppWindow, Download, Gamepad2, Globe, Layers, Rocket, Store } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import SectionHeader from './SectionHeader';
-import { products, ProductCategory, ProductStatus } from '../data/products';
+import { products, Product, ProductCategory, ProductStatus } from '../data/products';
 
 type Filter = 'all' | ProductCategory;
 
@@ -10,19 +10,34 @@ const statusStyle: Record<ProductStatus, string> = {
   released: 'bg-emerald-500/15 text-emerald-300 border-emerald-400/30',
   beta: 'bg-amber-500/15 text-amber-300 border-amber-400/30',
   dev: 'bg-purple-500/20 text-purple-200 border-purple-400/40',
+  planned: 'bg-sky-500/15 text-sky-200 border-sky-400/40',
   soon: 'bg-blue-500/15 text-blue-300 border-blue-400/30',
 };
 
 const categoryIcon: Record<ProductCategory, React.ReactNode> = {
   game: <Gamepad2 size={16} />,
   app: <AppWindow size={16} />,
+  web: <Globe size={16} />,
+};
+
+// Seçili sekmeye göre görseller: Uygulamalar/Web Siteleri sekmesinde o platformun görselleri,
+// "Tümü"nde ortak görseller (yoksa ilk platformun görselleri) gösterilir.
+const imagesFor = (product: Product, filter: 'all' | ProductCategory) => {
+  if (filter !== 'all' && product.imagesByCategory?.[filter]) return product.imagesByCategory[filter];
+  return product.images ?? Object.values(product.imagesByCategory ?? {})[0];
 };
 
 // Kart görseli: birden fazla görsel varsa alttaki noktalarla geçiş yapılır
-const ProductImages = ({ images, alt, fallback }: { images?: string[]; alt: string; fallback: React.ReactNode }) => {
+const ProductImages = ({ images, alt, fallback = '?' }: { images?: string[]; alt: string; fallback?: React.ReactNode }) => {
   const [active, setActive] = useState(0);
   if (!images || images.length === 0) {
-    return <div className="w-full h-full flex items-center justify-center text-slate-600">{fallback}</div>;
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-900/40 via-slate-900 to-blue-900/40">
+        <span className="font-display text-7xl font-bold bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent select-none">
+          {fallback}
+        </span>
+      </div>
+    );
   }
   return (
     <>
@@ -63,10 +78,12 @@ const Products = () => {
     { key: 'all', label: t.products.all, icon: <Layers size={16} /> },
     { key: 'game', label: t.products.games, icon: <Gamepad2 size={16} /> },
     { key: 'app', label: t.products.apps, icon: <AppWindow size={16} /> },
+    { key: 'web', label: t.products.websites, icon: <Globe size={16} /> },
   ];
 
-  const visible = filter === 'all' ? products : products.filter((p) => p.category === filter);
-  const countOf = (key: Filter) => (key === 'all' ? products.length : products.filter((p) => p.category === key).length);
+  // Birden fazla kategorideki ürün "Tümü"nde tek kez görünür
+  const visible = filter === 'all' ? products : products.filter((p) => p.categories.includes(filter));
+  const countOf = (key: Filter) => (key === 'all' ? products.length : products.filter((p) => p.categories.includes(key)).length);
 
   return (
     <section id="products" className="pt-32 pb-24 md:pt-36">
@@ -94,16 +111,7 @@ const Products = () => {
           </div>
         )}
 
-        {visible.length === 0 && filter === 'app' ? (
-          /* Uygulamalar: henüz yok, planlanan uygulama bilgisi */
-          <div className="card-glass max-w-xl mx-auto p-10 text-center">
-            <div className="mx-auto mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/30 to-blue-500/30 border border-white/10 flex items-center justify-center text-purple-200">
-              <GraduationCap size={28} />
-            </div>
-            <h2 className="font-display text-2xl font-semibold text-white mb-3">{t.products.appsPlannedTitle}</h2>
-            <p className="text-slate-400 leading-relaxed">{t.products.appsPlannedDesc}</p>
-          </div>
-        ) : visible.length === 0 ? (
+        {visible.length === 0 ? (
           /* Henüz ürün yoksa */
           <div className="card-glass max-w-xl mx-auto p-10 text-center">
             <div className="mx-auto mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/30 to-blue-500/30 border border-white/10 flex items-center justify-center text-purple-200">
@@ -127,11 +135,7 @@ const Products = () => {
               return (
                 <article key={product.id} className="group card-glass card-glass-hover hover:-translate-y-1 overflow-hidden flex flex-col">
                   <div className="relative overflow-hidden aspect-video bg-slate-800">
-                    <ProductImages
-                      images={product.images}
-                      alt={text.title}
-                      fallback={product.category === 'game' ? <Gamepad2 size={48} /> : <AppWindow size={48} />}
-                    />
+                    <ProductImages key={`${product.id}-${filter}`} images={imagesFor(product, filter)} alt={text.title} />
                     <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold border backdrop-blur-md ${statusStyle[product.status]}`}>
                       {t.products.status[product.status]}
                     </span>
@@ -140,15 +144,21 @@ const Products = () => {
                   <div className="p-6 flex flex-col flex-1">
                     <div className="flex items-center justify-between mb-3 gap-3">
                       <h3 className="font-display text-xl font-semibold text-white group-hover:text-purple-300 transition-colors duration-300">
+                        {product.codeName && (
+                          <span className="text-slate-400 text-base font-medium mr-1.5">{t.products.codeName}:</span>
+                        )}
                         {text.title}
                       </h3>
                       <span className="flex items-center gap-1.5 text-slate-400 text-sm shrink-0">
-                        {categoryIcon[product.category]}
+                        {product.categories.map((c) => (
+                          <span key={c}>{categoryIcon[c]}</span>
+                        ))}
                         {product.year}
                       </span>
                     </div>
                     <p className="text-slate-400 text-sm mb-4 leading-relaxed">{text.description}</p>
 
+                    {product.platforms.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-5">
                       {product.platforms.map((platform) => (
                         <span key={platform} className="bg-blue-500/15 text-blue-200 px-2 py-1 rounded-md text-xs font-medium">
@@ -156,6 +166,7 @@ const Products = () => {
                         </span>
                       ))}
                     </div>
+                    )}
 
                     <div className="flex gap-3 mt-auto">
                       {product.links?.store && (
