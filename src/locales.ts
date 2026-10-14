@@ -53,13 +53,15 @@ export const translations = {
       report: 'Rapor'
     },
     products: {
-      desc: 'Yayınladığım oyunlar ve uygulamalar.',
+      desc: "Geliştirdiğim ve yayınladığım oyunlar ve uygulamalar.",
       all: 'Tümü',
       games: 'Oyunlar',
       apps: 'Uygulamalar',
       emptyTitle: 'Çok yakında',
       emptyDesc: 'Üzerinde çalıştığım oyunlar ve uygulamalar yayınlandıkça burada yer alacak.',
-      status: { released: 'Yayında', beta: 'Beta', soon: 'Yakında' },
+      status: { released: "Yayında", beta: "Beta", dev: "Geliştiriliyor", soon: "Yakında" },
+      appsPlannedTitle: "Öğrenciler için bir web uygulaması planlıyorum",
+      appsPlannedDesc: "Öğrencilerin işini kolaylaştıracak bir web sitesi uygulaması planlama aşamasında. Para kazanma amacı yok; tamamen ücretsiz olacak.",
       links: { store: 'Mağaza', download: 'İndir', web: 'Web' }
     },
     contact: {
@@ -189,13 +191,15 @@ export const translations = {
       report: 'Report'
     },
     products: {
-      desc: 'Games and applications I have released.',
+      desc: "Games and applications I am building and releasing.",
       all: 'All',
       games: 'Games',
       apps: 'Apps',
       emptyTitle: 'Coming soon',
       emptyDesc: 'The games and apps I am working on will appear here as they are released.',
-      status: { released: 'Live', beta: 'Beta', soon: 'Coming Soon' },
+      status: { released: "Live", beta: "Beta", dev: "In Development", soon: "Coming Soon" },
+      appsPlannedTitle: "A web app for students is in the works",
+      appsPlannedDesc: "I am planning a web application to make students' lives easier. It is not meant to make money; it will be completely free.",
       links: { store: 'Store', download: 'Download', web: 'Web' }
     },
     contact: {
@@ -325,13 +329,15 @@ export const translations = {
       report: 'Informe'
     },
     products: {
-      desc: 'Juegos y aplicaciones que he publicado.',
+      desc: "Juegos y aplicaciones que estoy desarrollando y publicando.",
       all: 'Todos',
       games: 'Juegos',
       apps: 'Aplicaciones',
       emptyTitle: 'Muy pronto',
       emptyDesc: 'Los juegos y aplicaciones en los que estoy trabajando aparecerán aquí a medida que se publiquen.',
-      status: { released: 'Publicado', beta: 'Beta', soon: 'Próximamente' },
+      status: { released: "Publicado", beta: "Beta", dev: "En desarrollo", soon: "Próximamente" },
+      appsPlannedTitle: "Estoy planeando una aplicación web para estudiantes",
+      appsPlannedDesc: "Una aplicación web para facilitar la vida de los estudiantes está en fase de planificación. No tiene fines de lucro; será completamente gratuita.",
       links: { store: 'Tienda', download: 'Descargar', web: 'Web' }
     },
     contact: {
@@ -461,13 +467,15 @@ export const translations = {
       report: "Rapport"
     },
     products: {
-      desc: "Les jeux et applications que j'ai publiés.",
+      desc: "Les jeux et applications que je développe et publie.",
       all: "Tous",
       games: "Jeux",
       apps: "Applications",
       emptyTitle: "Bientôt disponible",
       emptyDesc: "Les jeux et applications sur lesquels je travaille apparaîtront ici dès leur sortie.",
-      status: { released: "Disponible", beta: "Bêta", soon: "Bientôt" },
+      status: { released: "Disponible", beta: "Bêta", dev: "En développement", soon: "Bientôt" },
+      appsPlannedTitle: "Une application web pour les étudiants est en préparation",
+      appsPlannedDesc: "Je prépare une application web pour faciliter la vie des étudiants. Elle n'a pas de but lucratif et sera entièrement gratuite.",
       links: { store: "Boutique", download: "Télécharger", web: "Web" }
     },
     contact: {

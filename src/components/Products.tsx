@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppWindow, Download, Gamepad2, Globe, Layers, Rocket, Store } from 'lucide-react';
+import { AppWindow, Download, Gamepad2, Globe, GraduationCap, Layers, Rocket, Store } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import SectionHeader from './SectionHeader';
 import { products, ProductCategory, ProductStatus } from '../data/products';
@@ -9,12 +9,50 @@ type Filter = 'all' | ProductCategory;
 const statusStyle: Record<ProductStatus, string> = {
   released: 'bg-emerald-500/15 text-emerald-300 border-emerald-400/30',
   beta: 'bg-amber-500/15 text-amber-300 border-amber-400/30',
+  dev: 'bg-purple-500/20 text-purple-200 border-purple-400/40',
   soon: 'bg-blue-500/15 text-blue-300 border-blue-400/30',
 };
 
 const categoryIcon: Record<ProductCategory, React.ReactNode> = {
   game: <Gamepad2 size={16} />,
   app: <AppWindow size={16} />,
+};
+
+// Kart görseli: birden fazla görsel varsa alttaki noktalarla geçiş yapılır
+const ProductImages = ({ images, alt, fallback }: { images?: string[]; alt: string; fallback: React.ReactNode }) => {
+  const [active, setActive] = useState(0);
+  if (!images || images.length === 0) {
+    return <div className="w-full h-full flex items-center justify-center text-slate-600">{fallback}</div>;
+  }
+  return (
+    <>
+      {images.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt={alt}
+          loading="lazy"
+          className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${
+            i === active ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      ))}
+      {images.length > 1 && (
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 px-2.5 py-1.5 rounded-full bg-slate-950/50 backdrop-blur-md">
+          {images.map((src, i) => (
+            <button
+              key={src}
+              onClick={() => setActive(i)}
+              aria-label={`${alt} ${i + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === active ? 'w-6 bg-white' : 'w-2 bg-white/40 hover:bg-white/70'
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </>
+  );
 };
 
 const Products = () => {
@@ -56,7 +94,16 @@ const Products = () => {
           </div>
         )}
 
-        {visible.length === 0 ? (
+        {visible.length === 0 && filter === 'app' ? (
+          /* Uygulamalar: henüz yok, planlanan uygulama bilgisi */
+          <div className="card-glass max-w-xl mx-auto p-10 text-center">
+            <div className="mx-auto mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/30 to-blue-500/30 border border-white/10 flex items-center justify-center text-purple-200">
+              <GraduationCap size={28} />
+            </div>
+            <h2 className="font-display text-2xl font-semibold text-white mb-3">{t.products.appsPlannedTitle}</h2>
+            <p className="text-slate-400 leading-relaxed">{t.products.appsPlannedDesc}</p>
+          </div>
+        ) : visible.length === 0 ? (
           /* Henüz ürün yoksa */
           <div className="card-glass max-w-xl mx-auto p-10 text-center">
             <div className="mx-auto mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/30 to-blue-500/30 border border-white/10 flex items-center justify-center text-purple-200">
@@ -80,18 +127,11 @@ const Products = () => {
               return (
                 <article key={product.id} className="group card-glass card-glass-hover hover:-translate-y-1 overflow-hidden flex flex-col">
                   <div className="relative overflow-hidden aspect-video bg-slate-800">
-                    {product.image ? (
-                      <img
-                        src={product.image}
-                        alt={text.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-slate-600">
-                        {product.category === 'game' ? <Gamepad2 size={48} /> : <AppWindow size={48} />}
-                      </div>
-                    )}
+                    <ProductImages
+                      images={product.images}
+                      alt={text.title}
+                      fallback={product.category === 'game' ? <Gamepad2 size={48} /> : <AppWindow size={48} />}
+                    />
                     <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold border backdrop-blur-md ${statusStyle[product.status]}`}>
                       {t.products.status[product.status]}
                     </span>
