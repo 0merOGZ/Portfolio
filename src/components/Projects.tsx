@@ -35,7 +35,7 @@ const Projects = () => {
     'https://drive.google.com/drive/folders/1eLNt-wJrAi5MR8l1nO0hZlgcgGHLTq3V?usp=drive_link', // Kelime Avı
     '',
     '',
-    '', // General Quiz -> General Quiz.exe Drive linki
+    'https://drive.google.com/drive/folders/1nRKIfYHh5QAYm4g8qShrkIIdqaXeai9l?usp=sharing', // General Quiz
   ];
   const mediaUrls = [
     '', // heic2jpg görseller
