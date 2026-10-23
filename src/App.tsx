@@ -10,6 +10,7 @@ import Projects from './components/Projects';
 import Products from './components/Products';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import { LanguageProvider, useLanguage } from './LanguageContext';
 import { pages, PageKey } from './routes';
 
@@ -26,6 +27,7 @@ const pageComponents: Record<PageKey, React.ComponentType> = {
 function Layout() {
   const { pathname } = useLocation();
   const { t } = useLanguage();
+  const isAgreementPage = pathname.startsWith('/sozlesmeler/');
   const current = pages.find((p) => p.path === pathname)?.key ?? 'home';
 
   // Sayfa değişince en üste dön ve sekme başlığını güncelle
@@ -34,14 +36,18 @@ function Layout() {
   }, [pathname]);
 
   useEffect(() => {
+    if (pathname === '/sozlesmeler/myPlaceCalled') {
+      document.title = 'Gizlilik Sözleşmesi - My Place Called | Ömer OĞUZ Portfolio';
+      return;
+    }
     document.title = current === 'home'
       ? 'Ömer OĞUZ Portfolio Website'
       : `${t.menu[current]} | Ömer OĞUZ Portfolio`;
-  }, [current, t]);
+  }, [current, pathname, t]);
 
   return (
     <div className="relative min-h-screen flex flex-col text-white">
-      <PageBackground page={current} />
+      <PageBackground page={isAgreementPage ? 'products' : current} />
       <Header />
       <main key={pathname} className="flex-1 animate-page-in">
         <Routes>
@@ -49,6 +55,7 @@ function Layout() {
             const Page = pageComponents[key];
             return <Route key={key} path={path} element={<Page />} />;
           })}
+          <Route path="/sozlesmeler/myPlaceCalled" element={<PrivacyPolicy />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

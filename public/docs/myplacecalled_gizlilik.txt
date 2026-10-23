@@ -1,0 +1,52 @@
+# Gizlilik Politikası / Privacy Policy — My Place Called
+
+> **Yayın Bağlantısı:** Google Play Console → **Uygulama içeriği → Gizlilik politikası** ve AdMob panelinde bu belgenin web bağlantısı istenir.
+> Bu dosya hem Türkçe hem İngilizce olarak hazırlanmıştır. Tam kapsamlı sözleşme: docs/gizlilik_sozlesmesi.md.
+
+**Uygulama / App:** My Place Called  
+**Geliştirici / Developer:** OGZ Interactives  
+**Paket Adı / Package:** com.omeroguz.myplacecalled  
+**Son Güncelleme / Last Updated:** 24 Ekim 2026 / October 24, 2026  
+**İletişim / Contact:** ogz.interactives@gmail.com  
+
+---
+
+## Türkçe
+
+My Place Called ("Oyun"), tek kişilik bir dükkân işletme ve yemek pişirme simülasyonudur. Bu belge oyunun verileri nasıl işlediğini açıklar.
+
+### 1. Toplanan Kişisel Veriler
+Oyun sunucusuz çalışır; isim, e-posta, telefon, kesin konum gibi hiçbir kişisel veri bizim tarafımızdan toplanmaz. Dükkân adı, slogan, ilerleme ve ayarlar yalnızca cihazınızın yerel depolama alanında saklanır; oyunu sildiğinizde bu bilgiler de silinir.
+
+### 2. Üçüncü Taraf Hizmetler
+- **Google AdMob** (isteğe bağlı ödüllü reklamlar): Reklam göstermek, ölçmek ve sahteciliği önlemek için cihazın reklam kimliği (GAID) ve temel teknik bilgiler Google tarafından işlenebilir. Avrupa Ekonomik Alanı ve Birleşik Krallık'ta oyun açılışında Google'ın rıza formu (UMP) gösterilir; rıza verilmeden reklam isteği yapılmaz. Tercihinizi oyun içinden **Ayarlar → Gizlilik seçenekleri** ile istediğiniz zaman değiştirebilirsiniz. Oyundaki reklamlar kişiselleştirilmemiş (NPA) ve genel kitleye (G) uygun olarak istenir.  
+  Google Politikası: https://policies.google.com/privacy
+- **Google Play Faturalandırma / RevenueCat** (uygulama içi satın alımlar): Satın almanın doğrulanması için anonim bir kullanıcı kimliği ve işlem kodu işlenir. Kredi kartı ve ödeme bilgileriniz Google Play'de kalır, bize asla ulaşmaz.  
+  RevenueCat Politikası: https://www.revenuecat.com/privacy
+
+### 3. Çocukların Gizliliği
+Oyun her yaştan kitleye uygundur. 13 yaş altındaki çocuklardan bilerek kişisel veri toplanmaz. Reklamlar aile dostu ve çocuklara uygun derecelendirmeyle sınırlandırılmıştır.
+
+### 4. Veri Silme Hakları
+Oyun harici sunucularda veri tutmadığı için silinecek bir hesap yoktur; uygulamayı kaldırmak cihazdaki tüm oyun verisini tamamen siler. Reklam kimliğinizi cihazınızın Android ayarlarından dilediğiniz an sıfırlayabilirsiniz.
+
+---
+
+## English
+
+My Place Called ("the Game") is a single-player shop management and cooking simulation. This policy explains how data is handled.
+
+### 1. Personal Data We Collect
+The game runs serverless; we do not collect personal data such as your name, email, phone number, or precise location. Your shop name, slogan, currency, recipes, and settings are stored exclusively on your local device and are erased when the game is uninstalled.
+
+### 2. Third-Party Services
+- **Google AdMob** (optional rewarded ads): Google may process your device's advertising ID (GAID) and basic technical data to serve and measure ads and prevent fraud. In the EEA and UK, Google's consent dialog (UMP) is displayed on launch; no ad is requested without consent. You can adjust your choices at any time in **Settings → Privacy options**. Ads are requested as non-personalized (NPA) with family-friendly (G) content ratings.  
+  Google Policy: https://policies.google.com/privacy
+- **Google Play Billing / RevenueCat** (in-app purchases): An anonymous user token and transaction receipt are processed to verify digital items. Your payment details remain securely with Google Play and never reach us.  
+  RevenueCat Policy: https://www.revenuecat.com/privacy
+
+### 3. Children's Privacy
+The game is family-friendly and suitable for all ages. It does not knowingly collect personal data from children under 13.
+
+### 4. Data Deletion
+Since we do not host online accounts or central servers, uninstalling the app permanently deletes all your game data from your device. You may reset or opt out of your advertising identifier via your device's system settings.

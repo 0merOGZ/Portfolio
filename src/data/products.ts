@@ -42,6 +42,7 @@ export interface Product {
   categories: ProductCategory[];
   status: ProductStatus;
   codeName?: boolean;
+  gameName?: boolean;
   images?: string[];
   imagesByCategory?: Partial<Record<ProductCategory, string[]>>;
   year?: string;
@@ -51,10 +52,51 @@ export interface Product {
     store?: string;
     download?: string;
     web?: string;
+    appStore?: string;
+    playStore?: string;
+    privacyPolicy?: string;
   };
 }
 
 export const products: Product[] = [
+  {
+    id: 'myplacecalled',
+    categories: ['game'],
+    status: 'released',
+    gameName: true,
+    images: [
+      '/media/myplacecalled/01.png',
+      '/media/myplacecalled/02.png',
+      '/media/myplacecalled/03.png',
+      '/media/myplacecalled/09.png',
+      '/media/myplacecalled/11.png',
+    ],
+    year: '2026',
+    platforms: ['Flutter', 'Android', 'iOS', 'Windows'],
+    text: {
+      tr: {
+        title: 'My Place Called',
+        description: "Kendi kahve dükkanını açıp işlettiğin bir Flutter oyunu. Müşterilerin siparişlerini hazırlıyor, yeni tarifler ve makineler açıyor, personel alıp dükkanı dekore ediyorsun. Ülkelerin yarıştığı Dünya Lezzet Ligi de var.",
+      },
+      en: {
+        title: 'My Place Called',
+        description: "A Flutter game where you open and run your own coffee shop. You prepare customer orders, unlock new recipes and machines, hire staff and decorate the shop. There is also a World Flavor League where countries compete.",
+      },
+      es: {
+        title: 'My Place Called',
+        description: "Un juego en Flutter donde abres y gestionas tu propia cafetería. Preparas los pedidos de los clientes, desbloqueas nuevas recetas y máquinas, contratas personal y decoras el local. También hay una Liga Mundial del Sabor donde compiten los países.",
+      },
+      fr: {
+        title: 'My Place Called',
+        description: "Un jeu Flutter où l'on ouvre et gère son propre café. On prépare les commandes des clients, on débloque de nouvelles recettes et machines, on recrute du personnel et on décore la boutique. Une Ligue mondiale des saveurs met aussi les pays en compétition.",
+      },
+    },
+    links: {
+      appStore: '',
+      playStore: '',
+      privacyPolicy: '/sozlesmeler/myPlaceCalled',
+    },
+  },
   {
     id: 'ogrnczm',
     categories: ['app', 'web'],
@@ -133,33 +175,6 @@ export const products: Product[] = [
       fr: {
         title: 'p1r6t3',
         description: "Un jeu de pirates qui tourne sur un moteur de jeu dédié construit avec Flutter. On quitte le port, on affronte des navires ennemis sur une mer infinie, on récolte du butin et on explore des îles. Météo, équipage, améliorations du navire et mini-jeux comme la chasse à la baleine sont au programme.",
-      },
-    },
-  },
-  {
-    id: 'myplacecalled',
-    categories: ['game'],
-    status: 'dev',
-    codeName: true,
-    images: ['/media/myplacecalled.webp', '/media/myplacecalled_dukkan.webp'],
-    year: '2026',
-    platforms: ['Flutter', 'Android', 'Windows'],
-    text: {
-      tr: {
-        title: 'myPlaceCalled',
-        description: "Kendi kahve dükkanını açıp işlettiğin bir Flutter oyunu. Müşterilerin siparişlerini hazırlıyor, yeni tarifler ve makineler açıyor, personel alıp dükkanı dekore ediyorsun. Ülkelerin yarıştığı Dünya Lezzet Ligi de var.",
-      },
-      en: {
-        title: 'myPlaceCalled',
-        description: "A Flutter game where you open and run your own coffee shop. You prepare customer orders, unlock new recipes and machines, hire staff and decorate the shop. There is also a World Flavor League where countries compete.",
-      },
-      es: {
-        title: 'myPlaceCalled',
-        description: "Un juego en Flutter donde abres y gestionas tu propia cafetería. Preparas los pedidos de los clientes, desbloqueas nuevas recetas y máquinas, contratas personal y decoras el local. También hay una Liga Mundial del Sabor donde compiten los países.",
-      },
-      fr: {
-        title: 'myPlaceCalled',
-        description: "Un jeu Flutter où l'on ouvre et gère son propre café. On prépare les commandes des clients, on débloque de nouvelles recettes et machines, on recrute du personnel et on décore la boutique. Une Ligue mondiale des saveurs met aussi les pays en compétition.",
       },
     },
   },

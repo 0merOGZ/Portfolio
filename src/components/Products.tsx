@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { AppWindow, Download, Gamepad2, Globe, Layers, Rocket, Store } from 'lucide-react';
+import { AppWindow, Download, Gamepad2, Globe, Layers, Rocket, ShieldCheck, Store } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 import SectionHeader from './SectionHeader';
 import { products, Product, ProductCategory, ProductStatus } from '../data/products';
@@ -7,11 +8,11 @@ import { products, Product, ProductCategory, ProductStatus } from '../data/produ
 type Filter = 'all' | ProductCategory;
 
 const statusStyle: Record<ProductStatus, string> = {
-  released: 'bg-emerald-500/15 text-emerald-300 border-emerald-400/30',
-  beta: 'bg-amber-500/15 text-amber-300 border-amber-400/30',
+  released: 'bg-emerald-500/20 text-emerald-200 border-emerald-400/40',
+  beta: 'bg-amber-500/20 text-amber-200 border-amber-400/40',
   dev: 'bg-purple-500/20 text-purple-200 border-purple-400/40',
-  planned: 'bg-sky-500/15 text-sky-200 border-sky-400/40',
-  soon: 'bg-blue-500/15 text-blue-300 border-blue-400/30',
+  planned: 'bg-blue-500/20 text-blue-200 border-blue-400/40',
+  soon: 'bg-sky-500/20 text-sky-200 border-sky-400/40',
 };
 
 const categoryIcon: Record<ProductCategory, React.ReactNode> = {
@@ -20,6 +21,18 @@ const categoryIcon: Record<ProductCategory, React.ReactNode> = {
   web: <Globe size={16} />,
 };
 
+const AppleIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.42c.62-.75 1.04-1.8 0.93-2.85-.9.04-2 .6-2.65 1.35-.58.66-1.09 1.73-.95 2.76 1.01.08 2.05-.51 2.67-1.26z" />
+  </svg>
+);
+
+const PlayStoreIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M3.609 1.814L13.793 12 3.61 22.186c-.365-.367-.61-.955-.61-1.686V3.5c0-.731.245-1.32.609-1.686zm11.254 11.256l2.36 2.36-11.83 6.83 9.47-9.19zm0-2.14L5.393 1.74l11.83 6.83-2.36 2.36zm1.414 1.07l3.657 2.11c1.076.621 1.076 1.637 0 2.258l-3.657 2.11-2.417-2.417 2.417-2.06z" />
+  </svg>
+);
+
 // Seçili sekmeye göre görseller: Uygulamalar/Web Siteleri sekmesinde o platformun görselleri,
 // "Tümü"nde ortak görseller (yoksa ilk platformun görselleri) gösterilir.
 const imagesFor = (product: Product, filter: 'all' | ProductCategory) => {
@@ -27,7 +40,7 @@ const imagesFor = (product: Product, filter: 'all' | ProductCategory) => {
   return product.images ?? Object.values(product.imagesByCategory ?? {})[0];
 };
 
-// Kart görseli: birden fazla görsel varsa alttaki noktalarla geçiş yapılır
+// Kart görseli: 9:16 dikey ekran görüntüleri dahil tüm formatlar kusursuz görünür
 const ProductImages = ({ images, alt, fallback = '?' }: { images?: string[]; alt: string; fallback?: React.ReactNode }) => {
   const [active, setActive] = useState(0);
   if (!images || images.length === 0) {
@@ -40,33 +53,49 @@ const ProductImages = ({ images, alt, fallback = '?' }: { images?: string[]; alt
     );
   }
   return (
-    <>
+    <div className="relative w-full h-full overflow-hidden bg-slate-950 flex items-center justify-center">
       {images.map((src, i) => (
-        <img
+        <div
           key={src}
-          src={src}
-          alt={alt}
-          loading="lazy"
-          className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${
-            i === active ? 'opacity-100' : 'opacity-0'
+          className={`absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ${
+            i === active ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
           }`}
-        />
+        >
+          {/* Arka plan bulanık ambiyans efekti */}
+          <img
+            src={src}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover blur-xl scale-110 opacity-35 select-none pointer-events-none"
+          />
+          {/* Asıl net görsel */}
+          <img
+            src={src}
+            alt={alt}
+            loading="lazy"
+            className="relative z-10 h-full w-auto max-w-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-md"
+          />
+        </div>
       ))}
       {images.length > 1 && (
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 px-2.5 py-1.5 rounded-full bg-slate-950/50 backdrop-blur-md">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-2 px-2.5 py-1.5 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/10">
           {images.map((src, i) => (
             <button
               key={src}
-              onClick={() => setActive(i)}
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setActive(i);
+              }}
               aria-label={`${alt} ${i + 1}`}
               className={`h-2 rounded-full transition-all duration-300 ${
-                i === active ? 'w-6 bg-white' : 'w-2 bg-white/40 hover:bg-white/70'
+                i === active ? 'w-6 bg-emerald-400' : 'w-2 bg-white/40 hover:bg-white/70'
               }`}
             />
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
@@ -132,11 +161,14 @@ const Products = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {visible.map((product) => {
               const text = product.text[language];
+              const hasStoreButtons = product.links?.appStore !== undefined || product.links?.playStore !== undefined;
+              const hasPrivacyPolicy = Boolean(product.links?.privacyPolicy);
+
               return (
                 <article key={product.id} className="group card-glass card-glass-hover hover:-translate-y-1 overflow-hidden flex flex-col">
-                  <div className="relative overflow-hidden aspect-video bg-slate-800">
+                  <div className="relative overflow-hidden aspect-video bg-slate-900">
                     <ProductImages key={`${product.id}-${filter}`} images={imagesFor(product, filter)} alt={text.title} />
-                    <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold border backdrop-blur-md ${statusStyle[product.status]}`}>
+                    <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold border backdrop-blur-md z-20 ${statusStyle[product.status]}`}>
                       {t.products.status[product.status]}
                     </span>
                   </div>
@@ -144,6 +176,9 @@ const Products = () => {
                   <div className="p-6 flex flex-col flex-1">
                     <div className="flex items-center justify-between mb-3 gap-3">
                       <h3 className="font-display text-xl font-semibold text-white group-hover:text-purple-300 transition-colors duration-300">
+                        {product.gameName && (
+                          <span className="text-slate-400 text-base font-medium mr-1.5">{t.products.gameName}:</span>
+                        )}
                         {product.codeName && (
                           <span className="text-slate-400 text-base font-medium mr-1.5">{t.products.codeName}:</span>
                         )}
@@ -159,33 +194,104 @@ const Products = () => {
                     <p className="text-slate-400 text-sm mb-4 leading-relaxed">{text.description}</p>
 
                     {product.platforms.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-5">
-                      {product.platforms.map((platform) => (
-                        <span key={platform} className="bg-blue-500/15 text-blue-200 px-2 py-1 rounded-md text-xs font-medium">
-                          {platform}
-                        </span>
-                      ))}
-                    </div>
+                      <div className="flex flex-wrap gap-2 mb-5">
+                        {product.platforms.map((platform) => (
+                          <span key={platform} className="bg-blue-500/15 text-blue-200 px-2 py-1 rounded-md text-xs font-medium">
+                            {platform}
+                          </span>
+                        ))}
+                      </div>
                     )}
 
-                    <div className="flex gap-3 mt-auto">
-                      {product.links?.store && (
-                        <a href={product.links.store} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center flex-1 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white py-2 px-4 rounded-lg font-medium transition-all duration-300 text-sm">
-                          <Store size={16} className="mr-2" />
-                          {t.products.links.store}
-                        </a>
+                    {/* Aksiyon Butonları */}
+                    <div className="mt-auto space-y-2.5">
+                      {/* App Store ve Google Play Store Butonları */}
+                      {hasStoreButtons && (
+                        <div className="flex gap-2.5">
+                          {product.links?.appStore !== undefined && (
+                            <a
+                              href={product.links.appStore || '#'}
+                              target={product.links.appStore ? '_blank' : undefined}
+                              rel="noopener noreferrer"
+                              onClick={(e) => {
+                                if (!product.links?.appStore) {
+                                  e.preventDefault();
+                                  alert('Oyun App Store üzerinde yakında yayınlanacaktır.');
+                                }
+                              }}
+                              className="flex items-center justify-center gap-2 flex-1 bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 hover:border-white/30 text-white py-2 px-3 rounded-lg font-medium transition-all duration-200 text-xs shadow-sm"
+                            >
+                              <AppleIcon className="w-4 h-4 text-white" />
+                              <span>{t.products.links?.appStore || 'App Store'}</span>
+                            </a>
+                          )}
+                          {product.links?.playStore !== undefined && (
+                            <a
+                              href={product.links.playStore || '#'}
+                              target={product.links.playStore ? '_blank' : undefined}
+                              rel="noopener noreferrer"
+                              onClick={(e) => {
+                                if (!product.links?.playStore) {
+                                  e.preventDefault();
+                                  alert('Oyun Google Play Store üzerinde yakında yayınlanacaktır.');
+                                }
+                              }}
+                              className="flex items-center justify-center gap-2 flex-1 bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 hover:border-white/30 text-white py-2 px-3 rounded-lg font-medium transition-all duration-200 text-xs shadow-sm"
+                            >
+                              <PlayStoreIcon className="w-4 h-4 text-emerald-400" />
+                              <span>{t.products.links?.playStore || 'Google Play'}</span>
+                            </a>
+                          )}
+                        </div>
                       )}
-                      {product.links?.download && (
-                        <a href={product.links.download} download className="flex items-center justify-center flex-1 border border-white/15 hover:border-purple-400 text-slate-300 hover:text-white py-2 px-4 rounded-lg font-medium transition-all duration-300 text-sm">
-                          <Download size={16} className="mr-2" />
-                          {t.products.links.download}
-                        </a>
+
+                      {/* Standart Mağaza / İndir / Web Butonları */}
+                      {(product.links?.store || product.links?.download || product.links?.web) && (
+                        <div className="flex gap-2.5">
+                          {product.links?.store && (
+                            <a
+                              href={product.links.store}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center flex-1 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white py-2 px-4 rounded-lg font-medium transition-all duration-300 text-sm"
+                            >
+                              <Store size={16} className="mr-2" />
+                              {t.products.links.store}
+                            </a>
+                          )}
+                          {product.links?.download && (
+                            <a
+                              href={product.links.download}
+                              download
+                              className="flex items-center justify-center flex-1 border border-white/15 hover:border-purple-400 text-slate-300 hover:text-white py-2 px-4 rounded-lg font-medium transition-all duration-300 text-sm"
+                            >
+                              <Download size={16} className="mr-2" />
+                              {t.products.links.download}
+                            </a>
+                          )}
+                          {product.links?.web && (
+                            <a
+                              href={product.links.web}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center flex-1 border border-white/15 hover:border-purple-400 text-slate-300 hover:text-white py-2 px-4 rounded-lg font-medium transition-all duration-300 text-sm"
+                            >
+                              <Globe size={16} className="mr-2" />
+                              {t.products.links.web}
+                            </a>
+                          )}
+                        </div>
                       )}
-                      {product.links?.web && (
-                        <a href={product.links.web} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center flex-1 border border-white/15 hover:border-purple-400 text-slate-300 hover:text-white py-2 px-4 rounded-lg font-medium transition-all duration-300 text-sm">
-                          <Globe size={16} className="mr-2" />
-                          {t.products.links.web}
-                        </a>
+
+                      {/* Gizlilik Sözleşmesi Butonu */}
+                      {hasPrivacyPolicy && (
+                        <Link
+                          to={product.links!.privacyPolicy!}
+                          className="flex items-center justify-center gap-2 w-full py-2 px-3 rounded-lg text-xs font-medium text-emerald-300 hover:text-emerald-100 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/25 hover:border-emerald-500/40 transition-all duration-200"
+                        >
+                          <ShieldCheck size={14} className="text-emerald-400" />
+                          <span>{t.products.links?.privacyPolicy || 'Gizlilik Sözleşmesi'}</span>
+                        </Link>
                       )}
                     </div>
                   </div>
