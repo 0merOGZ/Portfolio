@@ -63,7 +63,7 @@ export const translations = {
       emptyTitle: 'Çok yakında',
       emptyDesc: 'Üzerinde çalıştığım oyunlar ve uygulamalar yayınlandıkça burada yer alacak.',
       status: { released: "Yayınlandı", beta: "Beta", planned: "Planlanıyor", dev: "Geliştiriliyor", soon: "Yakında" },
-      links: { store: 'Mağaza', download: 'İndir', web: 'Web', appStore: 'App Store', playStore: 'Google Play', privacyPolicy: 'Gizlilik Sözleşmesi' }
+      links: { store: 'Mağaza', download: 'İndir', web: 'Web', appStore: 'App Store', playStore: 'Google Play', privacyPolicy: 'Gizlilik Sözleşmesi', backToProducts: 'Ürünlere Dön' }
     },
     contact: {
       desc: 'Projeleriniz hakkında konuşmak veya işbirliği yapmak için benimle iletişime geçin.',
@@ -202,7 +202,7 @@ export const translations = {
       emptyTitle: 'Coming soon',
       emptyDesc: 'The games and apps I am working on will appear here as they are released.',
       status: { released: "Released", beta: "Beta", planned: "Planned", dev: "In Development", soon: "Coming Soon" },
-      links: { store: 'Store', download: 'Download', web: 'Web', appStore: 'App Store', playStore: 'Google Play', privacyPolicy: 'Privacy Policy' }
+      links: { store: 'Store', download: 'Download', web: 'Web', appStore: 'App Store', playStore: 'Google Play', privacyPolicy: 'Privacy Policy', backToProducts: 'Back to Products' }
     },
     contact: {
       desc: 'Contact me to discuss your projects or collaborate.',
@@ -341,7 +341,7 @@ export const translations = {
       emptyTitle: 'Muy pronto',
       emptyDesc: 'Los juegos y aplicaciones en los que estoy trabajando aparecerán aquí a medida que se publiquen.',
       status: { released: "Publicado", beta: "Beta", planned: "Planificado", dev: "En desarrollo", soon: "Próximamente" },
-      links: { store: 'Tienda', download: 'Descargar', web: 'Web', appStore: 'App Store', playStore: 'Google Play', privacyPolicy: 'Política de Privacidad' }
+      links: { store: 'Tienda', download: 'Descargar', web: 'Web', appStore: 'App Store', playStore: 'Google Play', privacyPolicy: 'Política de Privacidad', backToProducts: 'Volver a Productos' }
     },
     contact: {
       desc: 'Contáctame para hablar sobre tus proyectos o colaborar.',
@@ -480,7 +480,7 @@ export const translations = {
       emptyTitle: "Bientôt disponible",
       emptyDesc: "Les jeux et applications sur lesquels je travaille apparaîtront ici dès leur sortie.",
       status: { released: "Publié", beta: "Bêta", planned: "Planifié", dev: "En développement", soon: "Bientôt" },
-      links: { store: "Boutique", download: "Télécharger", web: "Web", appStore: 'App Store', playStore: 'Google Play', privacyPolicy: 'Politique de Confidentialité' }
+      links: { store: "Boutique", download: "Télécharger", web: "Web", appStore: 'App Store', playStore: 'Google Play', privacyPolicy: 'Politique de Confidentialité', backToProducts: 'Retour aux produits' }
     },
     contact: {
       desc: "Contactez-moi pour parler de vos projets ou pour collaborer.",

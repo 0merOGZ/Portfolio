@@ -60,6 +60,43 @@ export interface Product {
 
 export const products: Product[] = [
   {
+    id: 'beverage',
+    categories: ['game'],
+    status: 'released',
+    gameName: true,
+    images: [
+      '/media/beverage/01_kapak.webp',
+      '/media/beverage/02_fabrika.webp',
+      '/media/beverage/03_menu_yol_haritasi.webp',
+    ],
+    year: '2026',
+    platforms: ['Flutter', 'Android', 'iOS'],
+    text: {
+      tr: {
+        title: 'Beverage & Beverage',
+        description: "Küçük bir limonata tezgâhından başlayıp büyük bir içecek markasına büyüdüğün tek oyunculu bir içecek üretimi ve işletme simülasyonu. Tarifler, yükseltmeler, tedarik ve dağıtım ağıyla yol haritasındaki aşamaları geçerek kendi fabrikana ulaşıyorsun.",
+      },
+      en: {
+        title: 'Beverage & Beverage',
+        description: "A single-player beverage production and business simulation where you grow from a small lemonade stand into a big drink brand. Recipes, upgrades, supply and distribution networks take you through the roadmap stages all the way to your own factory.",
+      },
+      es: {
+        title: 'Beverage & Beverage',
+        description: "Una simulación de producción de bebidas y gestión empresarial para un jugador en la que pasas de un pequeño puesto de limonada a una gran marca de bebidas. Recetas, mejoras y redes de suministro y distribución te llevan por las etapas de la hoja de ruta hasta tu propia fábrica.",
+      },
+      fr: {
+        title: 'Beverage & Beverage',
+        description: "Une simulation de production de boissons et de gestion d'entreprise en solo où l'on passe d'un petit stand de limonade à une grande marque de boissons. Recettes, améliorations, réseaux d'approvisionnement et de distribution font franchir les étapes de la feuille de route jusqu'à sa propre usine.",
+      },
+    },
+    links: {
+      // Mağaza linkleri gelince buraya yapıştır; boşken butona basınca "yakında" uyarısı çıkar
+      appStore: '',
+      playStore: '',
+      privacyPolicy: '/sozlesmeler/BeverageAndBeverage',
+    },
+  },
+  {
     id: 'myplacecalled',
     categories: ['game'],
     status: 'released',

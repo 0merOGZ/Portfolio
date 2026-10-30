@@ -11,6 +11,8 @@ import Products from './components/Products';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import PolicyDocument from './components/PolicyDocument';
+import { policies } from './data/policies';
 import { LanguageProvider, useLanguage } from './LanguageContext';
 import { pages, PageKey } from './routes';
 
@@ -40,6 +42,11 @@ function Layout() {
       document.title = 'Gizlilik Sözleşmesi - My Place Called | Ömer OĞUZ Portfolio';
       return;
     }
+    const policy = policies.find((p) => pathname === `/sozlesmeler/${p.slug}`);
+    if (policy) {
+      document.title = `Gizlilik Sözleşmesi - ${policy.appName} | Ömer OĞUZ Portfolio`;
+      return;
+    }
     document.title = current === 'home'
       ? 'Ömer OĞUZ Portfolio Website'
       : `${t.menu[current]} | Ömer OĞUZ Portfolio`;
@@ -56,6 +63,7 @@ function Layout() {
             return <Route key={key} path={path} element={<Page />} />;
           })}
           <Route path="/sozlesmeler/myPlaceCalled" element={<PrivacyPolicy />} />
+          <Route path="/sozlesmeler/:slug" element={<PolicyDocument />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
