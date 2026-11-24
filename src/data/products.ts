@@ -92,7 +92,7 @@ export const products: Product[] = [
     links: {
       // Mağaza linkleri gelince buraya yapıştır; boşken butona basınca "yakında" uyarısı çıkar
       appStore: '',
-      playStore: '',
+      playStore: 'https://play.google.com/store/apps/details?id=com.omeroguz.beveragebeverage',
       privacyPolicy: '/sozlesmeler/BeverageAndBeverage',
     },
   },
